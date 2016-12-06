@@ -1,0 +1,142 @@
+  <div class="body header-style2">
+        <div class="toprow">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                         <nav class="top-menus">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="fa fa-facebook-square"></i></a>
+                                    <span class="border_nav-right">|</span>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-twitter-square"></i></a>
+                                    <span class="border_nav-right">|</span>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <span class="border_nav-right">|</span>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-google-plus-square"></i></a>
+                                    <span class="border_nav-right">|</span>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-linkedin-square"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a></li>
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i> User Management<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                {{# if login}}
+                                     <li><a href="#"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;User Name</a></li>
+                                     <li><a href="/user/profile"><i class="fa fa-user-md" aria-hidden="true"></i>&nbsp;User Profile</a></li>
+                                     <li><a href="/user/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Logout</a></li>
+                               {{else}}
+                                    <li><a href="/user/signup"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Sign Up</a></li>
+                                    <li><a href="/user/signin"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Sign In</a></li>
+                                {{/if}}
+                               
+                            </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Start Site Header -->
+        <header class="site-header">
+
+            <div class="topbar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-8">
+                            <h1 class="logo">
+                                <a href="/"><img src="/images/logo.png" alt="Logo"></a>
+                            </h1>
+                        </div>
+                        <div class="col-md-8 col-sm-6 col-xs-4 top_address" style="text-align: right;">
+
+                            <div class="top_com_add">
+                                <p>For Reservation Call to:</p>
+                                <p class="mobile_num">+91 123 456 7890*</p>
+                                <p class="timing">Opening hours : 9am - 8pm</p>
+                            </div>
+
+                            <a href="#" class="visible-sm visible-xs menu-toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nav class="navigation test-menu">
+                                <ul class="sf-menu">
+                                    <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li class="megamenu"><a href="#">Destinations</a>
+                                        <ul class="dropdown">
+                                            <li>
+                                                <div class="megamenu-container container">
+                                                    <div class="row">
+                                                        <div class="col-md-3 hidden-sm hidden-xs">
+                                                            <span class="megamenu-sub-title"><i class="fa fa-pagelines"></i>&nbsp;Far East</span>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="#">Thailand</a></li>
+                                                                <li><a href="#">Location 2</a></li>
+                                                                <li><a href="#">Location 3</a></li>
+                                                                <li><a href="#">Location 4</a></li>
+                                                                <li><a href="#">Location 5</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-3"> <span class="megamenu-sub-title"><i class="fa fa-pagelines"></i>&nbsp;Region Two</span>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="#">Hawaii</a></li>
+                                                                <li><a href="#">Location 2</a></li>
+                                                                <li><a href="#">Location 3</a></li>
+                                                                <li><a href="#">Location 4</a></li>
+                                                                <li><a href="#">Location 5</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-3"> <span class="megamenu-sub-title"><i class="fa fa-pagelines"></i>&nbsp;Region Three</span>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="#">Location 1</a></li>
+                                                                <li><a href="#">Location 2</a></li>
+                                                                <li><a href="#">Location 3</a></li>
+                                                                <li><a href="#">Location 4</a></li>
+                                                                <li><a href="#">Location 5</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-3"> <span class="megamenu-sub-title"><i class="fa fa-pagelines"></i>&nbsp;Region Three</span>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="#">Location 1</a></li>
+                                                                <li><a href="#">Location 2</a></li>
+                                                                <li><a href="#">Location 3</a></li>
+                                                                <li><a href="#">Location 4</a></li>
+                                                                <li><a href="#">Location 5</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Activities</a></li>
+                                    <li><a href="hotel-list.html">Collections</a> </li>
+                                    <li><a href="#">Special Offers</a> </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End Site Header -->
