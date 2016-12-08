@@ -12,6 +12,7 @@ var flash = require('connect-flash');
 var validator = require('express-validator');
 
 var routes = require('./routes/index');
+var adminRoutes = require('./routes/admin');
 var userRoutes = require('./routes/user');
 
 var app = express();
@@ -38,10 +39,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next) {
     res.locals.login = req.isAuthenticated();
+    res.locals.user = req.user;
     next();
 });
 
+
 app.use('/user', userRoutes);
+app.use('/admin', adminRoutes)
 app.use('/', routes);
 
 

@@ -18,7 +18,7 @@ router.get('/logout', isLoggedIn, function(req, res, next) {
 });
 
 
-router.use('/', notLoggedIn, function(req, res, next) {
+router.use('/', isLoggedIn, function(req, res, next) {
     next();
 });
 
@@ -38,25 +38,26 @@ router.get('/signin', function(req, res, next) {
     res.render('user/signin', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
 });
 
-router.post('/signin', passport.authenticate('local.signin', {
-    successRedirect: '/user/profile',
-    failureRedirect: '/user/signin',
-    failureFlash: true
-}));
+router.post('/signin', passport.authenticate('local.signin'),
+    function(req, res) {
+        if (req.user.roles == 'USER') {
+            res.redirect('/user/profile');
+        } else if (req.user.roles == 'ADMIN') {
+            res.redirect('/admin');
+        } else if (req.user.roles == 'SUPERADMIN') {
+            res.redirect('/superadmin/profile');
+        } else {
+            res.redirect('/user/signin');
+        }
+    }
+);
 
 
 module.exports = router;
 
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated() || req.path == '/signin' || req.path == '/signup') {
         return next();
     }
-    res.redirect('/');
-}
-
-function notLoggedIn(req, res, next) {
-    if (!req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/');
+    res.redirect('/user/signin');
 }

@@ -14,10 +14,13 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use('local.signup', new LocalStrategy({
-    usernameField: 'email',
+    emailField: 'email',
     passwordField: 'password',
+    usernameField: 'username',
     passReqToCallback: true
 }, function(req, email, password, done) {
+    console.warn(req);
+    req.checkBody('username', 'Invalid username').notEmpty();
     req.checkBody('email', 'Invalid email').notEmpty().isEmail();
     req.checkBody('password', 'Your password should be of at least 8 characters').notEmpty().isLength({ min: 8 });
     var errors = req.validationErrors();
@@ -26,9 +29,9 @@ passport.use('local.signup', new LocalStrategy({
         errors.forEach(function(error) {
             messages.push(error.msg);
         });
-        return done(null, false, req.flash('error', messages));
+        return done(null, req.flash('error', messages));
     }
-    User.findOne({ 'email': email }, function(err, user) {
+    User.findOne({ 'email': req.param('email') }, function(err, user) {
         if (err) {
             return done(err);
         }
@@ -36,16 +39,21 @@ passport.use('local.signup', new LocalStrategy({
             return done(null, false, { message: 'Email is already in use.' });
         }
         var newUser = new User();
-        newUser.email = email;
-        newUser.password = newUser.encryptPassword(password);
+        newUser.username = req.param('username');
+        newUser.email = req.param('email');
+        newUser.password = newUser.encryptPassword(req.param('password'));
+        newUser.roles = "ADMIN";
+        newUser.status = true;
         newUser.save(function(err, result) {
             if (err) {
                 return done(err);
             }
-            return done(null, newUser);
+            return done(null, result);
         });
     });
+
 }));
+
 
 
 passport.use('local.signin', new LocalStrategy({

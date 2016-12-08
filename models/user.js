@@ -3,8 +3,14 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 
 var userSchema = new Schema({
+    username: { type: String, require: true },
     email: { type: String, require: true },
-    password: { type: String, require: true }
+    password: { type: String, require: true },
+    roles: {
+        type: String,
+        enum: ['USER', 'ADMIN', 'SUPERADMIN']
+    },
+    status: { type: Boolean, require: true }
 });
 
 userSchema.methods.encryptPassword = function(password) {

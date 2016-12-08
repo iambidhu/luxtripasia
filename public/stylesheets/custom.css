@@ -837,3 +837,23 @@ input:-ms-input-placeholder {
     text-align: center;
     padding: 10px;
 }
+
+.site-footer-bottom.admin {
+    background-color: #1f2f3d;
+    padding: 4px 0;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    color: #f1f1f1;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+}
+
+.powered.footer-bottom {
+    text-align: right;
+}
+
+.powered.footer-bottom p a {
+    color: #DFF1F0;
+}

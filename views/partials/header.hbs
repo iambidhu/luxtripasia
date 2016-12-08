@@ -1,4 +1,5 @@
-  <div class="body header-style2">
+ 
+ <div class="body header-style2">
         <div class="toprow">
             <div class="container">
                 <div class="row">
@@ -32,17 +33,19 @@
                             <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a></li>
                             <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i> User Management<span class="caret"></span></a>
+                                <i class="fa fa-user-circle" aria-hidden="true"></i> User Management<span class="caret"></span></a>
                             <ul class="dropdown-menu">
+                                
                                 {{# if login}}
-                                     <li><a href="#"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;User Name</a></li>
-                                     <li><a href="/user/profile"><i class="fa fa-user-md" aria-hidden="true"></i>&nbsp;User Profile</a></li>
+                                     <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{user.username}}</a></li>
+                                     <li><a href="/user/profile"><i class="fa fa-address-card-o" aria-hidden="true"></i>&nbsp;User Profile</a></li>
                                      <li><a href="/user/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Logout</a></li>
                                {{else}}
-                                    <li><a href="/user/signup"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Sign Up</a></li>
+                                    <li><a href="/user/signup"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;Sign Up</a></li>
                                     <li><a href="/user/signin"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Sign In</a></li>
                                 {{/if}}
-                               
+                                
+                                
                             </ul>
                             </li>
                         </ul>
