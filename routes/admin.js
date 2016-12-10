@@ -3,16 +3,14 @@ var router = express.Router();
 var csrf = require('csurf');
 var app = express();
 
+var admin = require('../controllers/admin');
+
 
 var csrfProtection = csrf();
 router.use(csrfProtection);
 
 
-router.get('/logout', isLoggedIn, function(req, res, next) {
-    req.session.destroy()
-    req.logout()
-    res.redirect('/user/signin')
-});
+router.get('/logout', isLoggedIn, admin.logout);
 
 
 router.use('/', isLoggedIn, function(req, res, next) {
@@ -20,13 +18,9 @@ router.use('/', isLoggedIn, function(req, res, next) {
 });
 /* GET home page. */
 
-router.get('/', function(req, res, next) {
-    if (req.user.roles == "ADMIN") {
-        res.render('admin/admin_home/dashboard', { title: 'Luxtripasia Admin', layout: '../admin/layouts/adminlayout' });
-    }
+router.get('/', isAdmin, admin.middleware);
 
-    /*app.set('view options', { layout: 'adminlayout' });*/
-});
+router.get('/admin_home/providers', isAdmin, admin.middlewareproviders);
 
 
 module.exports = router;
@@ -36,4 +30,11 @@ function isLoggedIn(req, res, next) {
         return next();
     }
     res.redirect('/user/signin');
+}
+
+function isAdmin(req, res, next) {
+    if (req.user.roles == "ADMIN") {
+        return next();
+    }
+    res.redirect('/');
 }

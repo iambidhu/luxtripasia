@@ -3,6 +3,7 @@ var router = express.Router();
 var csrf = require('csurf');
 var passport = require('passport');
 
+var user = require('../controllers/user');
 
 var csrfProtection = csrf();
 router.use(csrfProtection);
@@ -11,21 +12,14 @@ router.get('/profile', isLoggedIn, function(req, res, next) {
     res.render('user/profile');
 });
 
-router.get('/logout', isLoggedIn, function(req, res, next) {
-    req.session.destroy()
-    req.logout()
-    res.redirect('/user/signin')
-});
+router.get('/logout', isLoggedIn, user.logout);
 
 
 router.use('/', isLoggedIn, function(req, res, next) {
     next();
 });
 
-router.get('/signup', function(req, res, next) {
-    var messages = req.flash('error');
-    res.render('user/signup', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
-});
+router.get('/signup', user.signupmiddleware);
 
 router.post('/signup', passport.authenticate('local.signup', {
     successRedirect: '/user/signin',
@@ -33,10 +27,7 @@ router.post('/signup', passport.authenticate('local.signup', {
     failureFlash: true
 }));
 
-router.get('/signin', function(req, res, next) {
-    var messages = req.flash('error');
-    res.render('user/signin', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
-});
+router.get('/signin', user.signinmiddleware);
 
 router.post('/signin', passport.authenticate('local.signin'),
     function(req, res) {
