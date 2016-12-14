@@ -1,3 +1,86 @@
-<div class="row main">
-    <h4 class="decorated">This is Providers Page</h4>
+<div class="main" role="main">
+    <div id="content" class="content full" style="padding-top:10px;">
+        <div class="container">
+            <div class="row">
+                {{!--
+                <div class="col-md-12 provider_heading">
+                    <h2>All Package Providers</h2>
+                </div>--}}
+                <h2 class="decorated"><span>All Package Providers</span></h2>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 provider_form">
+                     {{#if hasErrors}}
+                        <div class="alert alert-danger">
+                            {{# each messages}}
+                                <p>{{this}}</p>
+                            {{/each}}
+                        </div>
+                    {{/if}}
+                    <form action="/admin/admin_home/providers" method="post">
+                        <div class="form-group">
+                            <label for="name">NAME</label>
+                            <input type="text" id="name" name="name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">EMAIL ID</label>
+                            <input type="text" id="email" name="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">MOBILE NUMBER</label>
+                            <input type="number" id="mobile" name="mobile" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">ADDRESS</label>
+                            <textarea class="form-control" name="address" cols="50" rows="5" id="address"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="zipcode">ZIPCODE</label>
+                            <input type="number" id="zipcode" name="zipcode" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">CITY</label>
+                            <input type="text" id="city" name="city" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="state">STATE</label>
+                            <input type="text" id="state" name="state" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">COUNTRY</label>
+                            <input type="text" id="country" name="country" class="form-control">
+                        </div>
+                        <input type="hidden" name="_csrf" value="{{ csrfToken }}" >
+                         <button type="submit" value="Submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;SAVE PROVIDER</button>
+                        
+                    </form>
+                </div>
+                <div class="col-md-6">
+                     <section class="get">
+                                <h3>Get Data</h3>
+                                <a href="/admin/admin_home/providers"><button type="button" class="btn btn-success">LOAD DATA&nbsp;<i class="fa fa-refresh" aria-hidden="true"></i></button></a>
+                               
+                                <div>
+                                    {{# each items }}
+                                        <article class="item">
+                                            <div>Name: {{ this.name }}</div>
+                                            <div>Email: {{ this.email }}</div>
+                                            <div>Mobile Number: {{ this.mobile }}</div>
+                                            <div>Country: {{ this.country }}</div>
+                                            <form>
+                                                <button type="button" class="btn btn-warning " >Edit &nbsp;<i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-danger deleteUser" data-id="{{this._id}}">Delete&nbsp;<i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                            </form>
+                                            
+                                        </article>
+                                    {{/each}}
+                                </div>
+                     </section>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

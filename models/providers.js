@@ -14,3 +14,6 @@ var providerSchema = new Schema({
     country: String,
     user_id: { type: ObjectId, ref: 'User' }
 });
+
+
+module.exports = mongoose.model('Provider', providerSchema);

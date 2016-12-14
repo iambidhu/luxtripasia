@@ -40,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
     res.locals.login = req.isAuthenticated();
     res.locals.user = req.user;
+    res.locals.providers = req.providers;
     next();
 });
 
@@ -55,6 +56,8 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
+
+
 
 // error handler
 app.use(function(err, req, res, next) {
