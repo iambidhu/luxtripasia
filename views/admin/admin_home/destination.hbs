@@ -1,0 +1,62 @@
+<div class="main" role="main">
+    <div id="content" class="content full" style="padding-top:10px;">
+        <div class="container">
+            <div class="row">
+                {{!--
+                <div class="col-md-12 provider_heading">
+                    <h2>All Package Providers</h2>
+                </div>--}}
+                <h2 class="decorated"><span>DESTINATIONS</span></h2>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 destination_form">
+                    
+                    {{!--<div class="alert alert-danger">
+                        {{message}}
+                    </div>--}}
+                     {{#if message}}
+                        <div class="alert alert-danger">
+                            {{# each message}}
+                                <p>{{this}}</p>
+                            {{/each}}
+                        </div>
+                    {{/if}}
+                    <form action="/admin/admin_home/destination" method="post">
+                        <div class="form-group">
+                            <label for="name">Destination</label>
+                            <input type="text" id="name" name="name" class="form-control">
+                        </div>
+                       
+                        <input type="hidden" name="_csrf" value="{{ csrfToken }}" >
+                         <button type="submit" value="Submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;ADD DESTINATION</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                     <section class="get">
+                         <div class="row">
+                             <h2 class="decorated">ALL DESTINATIONS</h2>
+                         </div>
+                                
+                                <a href="/admin/admin_home/destination"><button type="button" class="btn btn-success">LOAD DATA&nbsp;<i class="fa fa-refresh" aria-hidden="true"></i></button></a>
+                               
+                                <div>
+                                    {{# each items }}
+                                        <article class="item destination_form">
+                                            <div>Name: {{ this.name }}</div>
+                                            <form>
+                                                <button type="button" class="btn btn-warning " >Edit &nbsp;<i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-danger deleteDestination" data-id="{{this._id}}">Delete&nbsp;<i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                            </form>
+                                            
+                                        </article>
+                                    {{/each}}
+                                </div>
+                     </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

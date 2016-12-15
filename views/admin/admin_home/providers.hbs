@@ -13,9 +13,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 provider_form">
-                     {{#if hasErrors}}
+                     
+                     {{#if errors}}
                         <div class="alert alert-danger">
-                            {{# each messages}}
+                            {{# each errors}}
                                 <p>{{this}}</p>
                             {{/each}}
                         </div>
