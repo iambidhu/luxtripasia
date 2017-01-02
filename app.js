@@ -41,7 +41,7 @@ app.use(function(req, res, next) {
     res.locals.login = req.isAuthenticated();
     res.locals.user = req.user;
     res.locals.providers = req.providers;
-    res.locals.destination = req.destination;
+    res.locals.destinations = req.destinations;
     next();
 });
 

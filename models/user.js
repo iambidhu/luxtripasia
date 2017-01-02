@@ -10,7 +10,15 @@ var userSchema = new Schema({
         type: String,
         enum: ['USER', 'ADMIN', 'SUPERADMIN']
     },
-    status: { type: Boolean, require: true }
+    status: { type: Boolean, require: true },
+    created_at: {
+        type: Date,
+        default: Date.now
+    },
+    updated_at: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 userSchema.methods.encryptPassword = function(password) {
