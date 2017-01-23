@@ -17,6 +17,7 @@ var userRoutes = require('./routes/user');
 
 var app = express();
 
+mongoose.Promise = global.Promise;
 mongoose.connect('localhost:27017/luxtripasia');
 require('./config/passport');
 
@@ -42,6 +43,7 @@ app.use(function(req, res, next) {
     res.locals.user = req.user;
     res.locals.providers = req.providers;
     res.locals.destinations = req.destinations;
+    res.locals.categories = req.categories;
     next();
 });
 

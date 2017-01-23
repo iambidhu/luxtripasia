@@ -22,7 +22,7 @@ passport.use('local.signup', new LocalStrategy({
     console.warn(req);
     req.checkBody('username', 'Invalid username').notEmpty();
     req.checkBody('email', 'Invalid email').notEmpty().isEmail();
-    req.checkBody('password', 'Your password should be of at least 8 characters').notEmpty().isLength({ min: 8 });
+    req.checkBody('password', 'Your password should be of at least 8 characters').notEmpty().isLength({ min: 2 });
     var errors = req.validationErrors();
     if (errors) {
         var messages = [];
@@ -42,7 +42,7 @@ passport.use('local.signup', new LocalStrategy({
         newUser.username = req.param('username');
         newUser.email = req.param('email');
         newUser.password = newUser.encryptPassword(req.param('password'));
-        newUser.roles = "ADMIN";
+        newUser.roles = "SUPERADMIN";
         newUser.status = true;
         newUser.save(function(err, result) {
             if (err) {

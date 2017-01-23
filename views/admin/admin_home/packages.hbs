@@ -1,0 +1,50 @@
+<div class="main" role="main">
+    <div id="content" class="content full" style="padding-top:10px;">
+        <div class="container">
+            <div class="row">
+                {{!--
+                <div class="col-md-12 provider_heading">
+                    <h2>All Package Providers</h2>
+                </div>--}}
+                <h2 class="decorated"><span>PACKAGES</span></h2>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                {{!-- Create Form--}}
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="create_package_button">
+                       <a href="/admin/admin_home/packages"> <button type="button" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Create New Package</button></a>
+                    </div>
+                </div>
+              
+                <div class="col-md-12">
+                     <section class="get">
+                         <div class="row">
+                             <h2 class="decorated textbox2">ALL PACKAGES</h2>
+                         </div>
+                                
+                        <a href="/admin/admin_home/packages"><button type="button" class="btn btn-success">LOAD DATA&nbsp;<i class="fa fa-refresh" aria-hidden="true"></i></button></a>
+                               
+                         <div>
+                             {{# each items }}
+                                <article class="item destination_form">
+                                    <div >
+                                        Name: <span class="destination_name"  data-id="{{this._id}}">{{ this.name }}</span></div>
+                                        <form>
+                                             <button type="button" class="btn btn-danger publishPackage" data-id="{{this._id}}">Published&nbsp;<i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                             <button type="button" class="btn btn-danger unpublishPackage" data-id="{{this._id}}">Unpublished&nbsp;<i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                             <button type="button" class="btn btn-danger promotePackage" data-id="{{this._id}}">Promote&nbsp;<i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                             <button type="button" class="btn btn-warning get_dest" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false" >Edit &nbsp;<i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                             <button type="button" class="btn btn-danger deleteDestination" data-id="{{this._id}}">Delete&nbsp;<i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </form>   
+                                </article>
+                            {{/each}}
+                        </div>
+                     </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

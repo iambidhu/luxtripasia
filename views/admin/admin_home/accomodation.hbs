@@ -1,0 +1,95 @@
+<div class="main" role="main">
+    <div id="content" class="content full" style="padding-top:10px;">
+        <div class="container">
+            <div class="row">
+                {{!--
+                <div class="col-md-12 provider_heading">
+                    <h2>All Package Providers</h2>
+                </div>--}}
+                <h2 class="decorated"><span>Accommodations</span></h2>
+
+            </div>
+        </div>
+        <div class="container">
+             <div class="row new_item_button">
+                <a href="/admin/admin_home/accomodation-new"><button class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;ADD ACCOMMODATION</button></a>
+             </div>
+            <div class="row">
+                
+                 {{!-- Edit Form--}}
+               <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        
+                        <div class="modal-body provider_form">
+                           <form action="/admin/admin_home/providers" method="post">
+                                    <div class="form-group">
+                                        <label for="name">NAME</label>
+                                        <input type="text" id="name" name="name" class="form-control provider_name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">EMAIL ID</label>
+                                        <input type="text" id="email" name="email" class="form-control provider_email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mobile">MOBILE NUMBER</label>
+                                        <input type="number" id="mobile" name="mobile" class="form-control provider_mobile">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address">ADDRESS</label>
+                                        <textarea type="textarea" class="form-control provider_address" name="address" cols="50" rows="5" id="address"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="zipcode">ZIPCODE</label>
+                                        <input type="number" id="zipcode" name="zipcode" class="form-control provider_zipcode">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="city">CITY</label>
+                                        <input type="text" id="city" name="city" class="form-control provider_city">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="state">STATE</label>
+                                        <input type="text" id="state" name="state" class="form-control provider_state">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="country">COUNTRY</label>
+                                        <input type="text" id="country" name="country" class="form-control provider_country">
+                                    </div>
+                                    <input type="hidden" name="_csrf" value="{{ csrfToken }}" >
+                                    <button type="submit" value="Submit" class="btn btn-primary updateProvider" data-id=""><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;SAVE CHANGES</button>
+                                    
+                         </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+                     <section class="get">
+                            <a href="/admin/admin_home/providers"><button type="button" class="btn btn-success">LOAD DATA&nbsp;<i class="fa fa-refresh" aria-hidden="true"></i></button></a>
+                               
+                             <div>
+                                {{# each items }}
+                                    <article class="item provider_form">
+                                         <div>Name:<span class="provider_name"  data-id="{{this._id}}"> {{ this.name }}</span></div>
+                                         <div>Email:<span class="provider_email"  > {{ this.email }}</span></div>
+                                         <div>Mobile Number:<span class="provider_mobile"  > {{ this.mobile }}</span></div>
+                                         <div style="display: none;"> <span class="provider_address">{{this.address}}</span></div>
+                                         <div style="display: none;"> <span class="provider_zipcode">{{this.zipcode}}</span></div>
+                                         <div style="display: none;"> <span class="provider_city">{{this.city}}</span></div>
+                                         <div style="display: none;"> <span class="provider_state">{{this.state}}</span></div>
+                                         <div>Country:<span class="provider_country"  > {{ this.country }}</span></div>
+                                         <form>
+                                            <button type="button" class="btn btn-warning get_provider" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Edit &nbsp;<i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button type="button" class="btn btn-danger deleteUser" data-id="{{this._id}}">Delete&nbsp;<i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                         </form>   
+                                        </article>
+                                    {{/each}}
+                                    
+                                </div>
+                     </section>
+            </div>
+        </div>
+    </div>
+</div>

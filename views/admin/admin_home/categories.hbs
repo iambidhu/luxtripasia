@@ -1,0 +1,78 @@
+<div class="main" role="main">
+    <div id="content" class="content full" style="padding-top:10px;">
+        <div class="container">
+            <div class="row">
+                {{!--
+                <div class="col-md-12 provider_heading">
+                    <h2>All Package Providers</h2>
+                </div>--}}
+                <h2 class="decorated"><span>Luxtripasia Admin: Categories</span></h2>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                {{!-- Create Form--}}
+                <div class="col-md-6 ">
+                    {{!--<div class="alert alert-danger">
+                        {{message}}
+                    </div>--}}
+                     {{#if message}}
+                        <div class="alert alert-danger">
+                            {{# each message}}
+                                <p>{{this}}</p>
+                            {{/each}}
+                        </div>
+                    {{/if}}
+                    <form action="/admin/admin_home/categories" method="post">
+                        <div class="form-group">
+                            <label for="name">Category Name</label>
+                            <input type="text" id="name" name="name" class="form-control">
+                        </div>
+                        <input type="hidden" name="_csrf" value="{{ csrfToken }}" >
+                         <button type="submit" value="Submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;ADD Category</button>
+                    </form>
+                </div>
+               {{!-- Edit Form--}}
+               <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body category_form">
+                                <form action="/admin/admin_home/categories" method="post">
+                                    <div class="form-group">
+                                        <label for="name">Category</label>
+                                        <input type="text" id="name" name="name" class="form-control category_name" >
+                                    </div>
+                                    <input type="hidden" name="_csrf" value="{{ csrfToken }}" >
+                                    <button type="submit" value="Submit" class="btn btn-primary updateCategory" data-id=""><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;SAVE CHANGES</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+                <div class="col-md-6">
+                     <section class="get">
+                         <div class="row">
+                             <h2 class="decorated textbox2">ALL CATEGORIES</h2>
+                         </div>
+                            <a href="/admin/admin_home/categories"><button type="button" class="btn btn-success">LOAD DATA&nbsp;<i class="fa fa-refresh" aria-hidden="true"></i></button></a>
+                             <div>
+                                 {{# each items }}
+                                    <article class="item category_form">
+                                        <div >Name: <span class="category_name"  data-id="{{this._id}}">{{ this.name }}</span></div>
+                                        <form class="button_group">
+                                            <button type="button" class="btn btn-warning get_category" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false" >Update &nbsp;<i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button type="button" class="btn btn-danger deleteCategory" data-id="{{this._id}}">Delete&nbsp;<i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </form> 
+                                    </article>
+                                {{/each}}
+                            </div>
+                     </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

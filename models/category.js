@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 var User = require('./user');
 
-var destinationSchema = new Schema({
+var categorySchema = new Schema({
     name: {
         type: String,
         require: true,
@@ -26,5 +26,4 @@ var destinationSchema = new Schema({
 
 
 
-
-module.exports = mongoose.model('Destination', destinationSchema);
+module.exports = mongoose.model('Category', categorySchema);

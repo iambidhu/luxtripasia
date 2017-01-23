@@ -1,0 +1,97 @@
+<div class="main" role="main">
+    <div id="content" class="content full" style="padding-top:10px;">
+        <div class="container">
+            <div class="row">
+                {{!--
+                <div class="col-md-12 provider_heading">
+                    <h2>All Package Providers</h2>
+                </div>--}}
+                <h2 class="decorated"><span>Add Accommodation</span></h2>
+            </div>
+        </div>
+        <div class="container">
+           
+            <div class="row">
+                    {{#if errors}}
+                        <div class="alert alert-danger">
+                            {{# each errors}}
+                                <p>{{this}}</p>
+                            {{/each}}
+                        </div>
+                    {{/if}}
+                    <form action="/admin/admin_home/accomodation-new" method="post">
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label for="country">COUNTRY</label>
+                                <select id="country" name ="country" class="form-control"></select> 
+                            </div>
+                            <div class="col-md-6">
+                                <label for="state">STATE</label>
+                                <select id="state" name="state" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                <label for="hotelname">Hotel Name</label>
+                                <input type="text" id="hotelname" name="hotelname" class="form-control">
+                            </div>
+                           <div class="col-md-4">
+                               <label for="starcategory">Star category</label>
+                               <select name="starcategory" id="starcategory" class="form-control">
+                                   <option value="default">Select Hotel Category</option>
+                                   {{# each categories }}
+                                        <option value="{{this.name}}">{{this.name}}</option>
+                                   {{/each}}
+                               </select>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                 <label for="description">Short Description</label>
+                                 <textarea class="form-control" name="description" cols="50" rows="5" id="description"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                <label for="Roomtype">Room type</label>
+                               
+                                {{!--<div class="input_fields_wrap">
+                                    <button class="add_field_button btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add More Fields</button>
+                                    <div> <input type="text" id="Roomtype" name="mytext[]" class="form-control"></div>
+                                </div>--}}
+                                <div id='TextBoxesGroup'>
+                                    <div id="TextBoxDiv1">
+                                        <label>Room #1 : </label><input type='textbox' id='textbox1' class="form-control" >
+                                    </div>
+                                </div>
+                                <input type='button' value='Add Room' id='addButton'>
+                                <input type='button' value='Remove Room' id='removeButton'>
+                                {{!--<input type='button' value='Get TextBox Value' id='getButtonValue'>--}}
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-6 img_upload_btn">
+                                <label>Choose image to upload: </label>
+                                <input name="uploadfile" type="file" id="myFile">
+                                <span style="color:red">Upload only image file (PNG, JPEG, GIF)</span>
+                            </div>
+                            <div class="col-md-6 img_upload_btn">
+                                <input value="UPLOAD" type="button" class="btn btn-primary">
+                                <span>(Click Here To Upload The Image)</span>
+                            </div>
+                        </div>
+                        
+                       <div class="form-group">
+                         <div class="col-md-12 submit_button_group">
+                            
+                            <input type="hidden" name="_csrf" value="{{ csrfToken }}" >
+                            <button type="submit" value="Submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;SAVE PROVIDER</button>
+                         </div>
+                       </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
